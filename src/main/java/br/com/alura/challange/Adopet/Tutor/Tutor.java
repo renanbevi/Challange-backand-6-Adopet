@@ -1,35 +1,49 @@
 package br.com.alura.challange.Adopet.Tutor;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+//Classe que representa os campos que estão dentro do Banco de dados.
+
+@Entity
 @Table(name ="tutores")
-@Entity(name= "tutores")
-
 
 
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of= "id")
-public class Tutores {
+@ToString(of = {"id" , "nome", "email"})
+public class Tutor {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+    private String nome;
     private String email;
     private String senha;
-    private String confirmacaoSenha;
 
-    public Tutores(DadosCadastroTutor dados){
-        this.name = dados.nome();
+
+
+    //Abaixo o this que é nossa entidade puxa as informações do dados.nome que vem do Record.
+    public Tutor(DadosCadastroTutor dados){
+        this.nome = dados.nome();
         this.email = dados.email();
         this.senha = dados.senha();
-        this.confirmacaoSenha = dados.confirmacaoSenha();
+
+    }
+
+    public void atualizaInformacoes(DadosAtualizacaoTutor dados){
+
+        if(dados.nome() != null) {
+            this.nome = dados.nome();
+        }
+
+        if(dados.email() != null){
+            this.email = dados.email();
+        }
+
     }
 
 }
