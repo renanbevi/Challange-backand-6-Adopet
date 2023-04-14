@@ -1,14 +1,14 @@
 package br.com.alura.challange.Adopet.Controller;
 
 import br.com.alura.challange.Adopet.Tutor.*;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.stream.Collectors;
 
 
 @RestController
@@ -43,24 +43,37 @@ public class TutoresController {
 
     @PutMapping
     @Transactional
-    public String atualizarTutor (@RequestBody @Valid DadosAtualizacaoTutor dados){
-        var tutor = tutoresRepository.getReferenceById(dados.id());
-        tutor.atualizaInformacoes(dados);
+    public ResponseEntity atualizarTutor(@RequestBody @Valid DadosAtualizacaoTutor dados) {
+        try {
+            var tutor = tutoresRepository.getReferenceById(dados.id());
+            tutor.atualizaInformacoes(dados);
+            return ResponseEntity.ok("Atualização efetuada com sucesso");
+        } catch (EntityNotFoundException e) {
+            return ResponseEntity.ok("Tutor não encontrado");
+        }
 
-        return ResponseEntity.ok("Atualização efetuada com sucesso").getBody();
     }
+
 
     @GetMapping
-    public ResponseEntity <Page<DadosListagemTutor>> listar(Pageable paginacao){
-        var page = tutoresRepository.findAll(paginacao).map(DadosListagemTutor::new);
-        return ResponseEntity.ok(page);
+    public ResponseEntity listar() {
+        var tutores = tutoresRepository.findAll();
+        if (tutores.isEmpty()) {
+            return ResponseEntity.ok("Não encontrado");
+        }
+        return ResponseEntity.ok(tutores.stream().map(DadosListagemTutor::new).collect(Collectors.toList()));
     }
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity deletarTutor(@PathVariable Long id){
+        try{
         var tutor = tutoresRepository.getReferenceById(id);
         tutoresRepository.delete(tutor);
         return ResponseEntity.noContent().build();
+        }catch (EntityNotFoundException e){
+        return  ResponseEntity.ok("Tutor não encontrado para deletar");
+        }
 
 
     }
