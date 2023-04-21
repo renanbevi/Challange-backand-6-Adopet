@@ -12,6 +12,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of= "id")
+@ToString(of = {"id","nome","descricao", "adotado","idade","imagem"})
 
 public class Pets {
 
@@ -57,5 +58,10 @@ public class Pets {
         if (dados.idAbrigo() != null){
             this.abrigo = abrigo;
         }
+    }
+
+    public void marcarComoAdotado() {
+
+        this.adotado = true;
     }
 }

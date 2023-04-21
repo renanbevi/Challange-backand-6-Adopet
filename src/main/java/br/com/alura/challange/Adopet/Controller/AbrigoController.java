@@ -23,7 +23,6 @@ public class AbrigoController {
 
     @PostMapping
     public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroAbrigo dados) {
-
         abrigoRepository.save(new Abrigo(dados));
         return ResponseEntity.ok("Abrigo cadastrado com sucesso");
     }
