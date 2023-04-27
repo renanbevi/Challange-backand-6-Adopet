@@ -1,7 +1,7 @@
-package br.com.alura.challange.Adopet.adocao;
+package br.com.alura.challange.Adopet.Domain.Adocao;
 
-import br.com.alura.challange.Adopet.Pets.PetsRepository;
-import br.com.alura.challange.Adopet.Tutor.TutoresRepository;
+import br.com.alura.challange.Adopet.Domain.Pets.PetsRepository;
+import br.com.alura.challange.Adopet.Domain.Tutor.TutoresRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,5 +35,15 @@ public class AdocaoService {
         return adocao;
 
     }
+    public void deletarAdocao(Long id){
+        var adocao = adocaoRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Adoção não cadastrada"));
+        adocaoRepository.deleteById(id);
+        var pet = petsRepository.findById(id).orElseThrow();
+        pet.marcarComoNaoAdotado(); // deletando a adoção o pet não estará mais adotado.
+
+
+
+    }
 }
+
 

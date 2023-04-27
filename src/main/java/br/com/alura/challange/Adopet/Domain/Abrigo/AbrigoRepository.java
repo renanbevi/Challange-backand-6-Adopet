@@ -1,6 +1,5 @@
-package br.com.alura.challange.Adopet.Abrigo;
+package br.com.alura.challange.Adopet.Domain.Abrigo;
 
-import br.com.alura.challange.Adopet.Tutor.Tutor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

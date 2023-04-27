@@ -1,4 +1,4 @@
-package br.com.alura.challange.Adopet.Abrigo;
+package br.com.alura.challange.Adopet.Domain.Abrigo;
 
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
@@ -21,10 +21,13 @@ public class Abrigo {
     private String cidade;
     private String estado;
 
+
+
     public Abrigo(DadosCadastroAbrigo dados) {
         this.nome = dados.nome();
         this.cidade = dados.cidade();
         this.estado = dados.estado();
+
     }
     public void atualizarInformacoes(@Valid DadosAtualizacaoAbrigo dados){
         if(dados.nome() != null){
@@ -36,5 +39,7 @@ public class Abrigo {
         if(dados.estado() != null){
             this.estado = dados.estado();
         }
+
+
     }
 }

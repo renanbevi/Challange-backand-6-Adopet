@@ -1,4 +1,4 @@
-package br.com.alura.challange.Adopet.Pets;
+package br.com.alura.challange.Adopet.Domain.Pets;
 
 
 import org.springframework.data.domain.Page;

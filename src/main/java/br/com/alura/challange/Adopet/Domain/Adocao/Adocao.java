@@ -1,9 +1,9 @@
-package br.com.alura.challange.Adopet.adocao;
+package br.com.alura.challange.Adopet.Domain.Adocao;
 
 
-import br.com.alura.challange.Adopet.Pets.Pets;
-import br.com.alura.challange.Adopet.Tutor.Tutor;
-import com.fasterxml.jackson.annotation.JsonFormat;
+
+import br.com.alura.challange.Adopet.Domain.Pets.Pets;
+import br.com.alura.challange.Adopet.Domain.Tutor.Tutor;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDate;
@@ -38,9 +38,10 @@ public class Adocao {
 
 
       public Adocao(DadosCadastroAdocao dados, Tutor tutor, Pets pets){
-        this.tutor = tutor;
-        this.pets = pets;
-        this.data = dados.data();
+          this.data = dados.data();
+          this.tutor = tutor;
+          this.pets = pets;
+
 
     }
 

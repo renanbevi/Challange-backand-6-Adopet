@@ -1,10 +1,6 @@
-package br.com.alura.challange.Adopet.adocao;
-
-import jakarta.validation.constraints.Future;
-import jakarta.validation.constraints.NotNull;
+package br.com.alura.challange.Adopet.Domain.Adocao;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 
 public record DadosAdocao(

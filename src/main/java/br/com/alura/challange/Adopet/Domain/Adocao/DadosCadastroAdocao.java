@@ -1,4 +1,4 @@
-package br.com.alura.challange.Adopet.adocao;
+package br.com.alura.challange.Adopet.Domain.Adocao;
 
 import java.time.LocalDate;
 

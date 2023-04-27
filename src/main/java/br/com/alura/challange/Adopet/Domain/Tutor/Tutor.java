@@ -1,4 +1,4 @@
-package br.com.alura.challange.Adopet.Tutor;
+package br.com.alura.challange.Adopet.Domain.Tutor;
 
 import jakarta.persistence.*;
 import lombok.*;

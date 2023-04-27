@@ -1,16 +1,12 @@
 package br.com.alura.challange.Adopet.Controller;
 
-import br.com.alura.challange.Adopet.Abrigo.Abrigo;
-import br.com.alura.challange.Adopet.Abrigo.AbrigoRepository;
-import br.com.alura.challange.Adopet.Abrigo.DadosAtualizacaoAbrigo;
-import br.com.alura.challange.Adopet.Abrigo.DadosListagemAbrigo;
-import br.com.alura.challange.Adopet.Pets.*;
-import br.com.alura.challange.Adopet.Tutor.DadosListagemTutor;
+import br.com.alura.challange.Adopet.Domain.Abrigo.Abrigo;
+import br.com.alura.challange.Adopet.Domain.Abrigo.AbrigoRepository;
+import br.com.alura.challange.Adopet.Domain.Pets.*;
+
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -36,8 +32,10 @@ public class PetsController {
     }
 
     @GetMapping
-    public ResponseEntity listar() {
+    public ResponseEntity listar(DadosCadastroPet dados) {
+
         var pets = petsRepository.findAll();
+
         if (pets.isEmpty()) {
             return ResponseEntity.ok("Não encontrado");
         }
@@ -46,6 +44,7 @@ public class PetsController {
 
     @GetMapping("/{id}")
     public ResponseEntity listarPetsPorID(@PathVariable Long id) throws Exception {
+
         var pets = petsRepository.getReferenceById(id);
         if(!petsRepository.existsById(id)) {
             throw new Exception("Id informado não existe");

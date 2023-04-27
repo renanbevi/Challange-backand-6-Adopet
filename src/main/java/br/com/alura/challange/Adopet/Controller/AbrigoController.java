@@ -1,13 +1,10 @@
 package br.com.alura.challange.Adopet.Controller;
 
-import br.com.alura.challange.Adopet.Abrigo.*;
-import br.com.alura.challange.Adopet.Pets.DadosListagemPets;
+
+import br.com.alura.challange.Adopet.Domain.Abrigo.*;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -53,7 +50,7 @@ public class AbrigoController {
 
             var abrigo = abrigoRepository.getReferenceById(dados.id());
             abrigo.atualizarInformacoes(dados);
-            return ResponseEntity.ok("Atualização efetuada com sucesso");
+            return ResponseEntity.ok(new DadosListagemAbrigo(abrigo));
         } catch (EntityNotFoundException e) {
             return ResponseEntity.ok("Abrigo não encontrado");
         }

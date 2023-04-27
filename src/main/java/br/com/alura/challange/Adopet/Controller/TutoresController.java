@@ -1,6 +1,7 @@
 package br.com.alura.challange.Adopet.Controller;
 
-import br.com.alura.challange.Adopet.Tutor.*;
+import br.com.alura.challange.Adopet.Domain.Tutor.*;
+
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

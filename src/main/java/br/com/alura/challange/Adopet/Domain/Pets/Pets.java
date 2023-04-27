@@ -1,7 +1,7 @@
-package br.com.alura.challange.Adopet.Pets;
+package br.com.alura.challange.Adopet.Domain.Pets;
 
 
-import br.com.alura.challange.Adopet.Abrigo.Abrigo;
+import br.com.alura.challange.Adopet.Domain.Abrigo.Abrigo;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -63,5 +63,9 @@ public class Pets {
     public void marcarComoAdotado() {
 
         this.adotado = true;
+    }
+
+    public void marcarComoNaoAdotado(){
+        this.adotado = false;
     }
 }

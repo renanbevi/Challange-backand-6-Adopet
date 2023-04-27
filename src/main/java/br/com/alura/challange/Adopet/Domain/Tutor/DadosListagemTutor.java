@@ -1,8 +1,5 @@
-package br.com.alura.challange.Adopet.Tutor;
+package br.com.alura.challange.Adopet.Domain.Tutor;
 
-
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 
 public record DadosListagemTutor(Long id, String nome, String email) {
 

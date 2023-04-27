@@ -1,20 +1,20 @@
-package br.com.alura.challange.Adopet.Pets;
+package br.com.alura.challange.Adopet.Domain.Pets;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 public record DadosCadastroPet(
 
-        @NotBlank
+        @NotBlank(message = "Nome é obrigatório")
         String nome,
-        @NotBlank
+        @NotBlank(message = "Descrição do pet é obrigatório")
         String descricao,
         @NotNull
         Boolean adotado,
-        @NotBlank
+        @NotBlank(message = "Descrição idade é obrigatório")
         String idade,
-        @NotBlank
+        @NotBlank(message = "imagem obrigatória")
         String imagem,
-        @NotNull
+
         Long idAbrigo
 
 ) {
