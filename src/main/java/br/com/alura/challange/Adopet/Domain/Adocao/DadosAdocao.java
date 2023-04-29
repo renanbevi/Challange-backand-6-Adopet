@@ -12,7 +12,7 @@ public record DadosAdocao(
 
 ) {
         public DadosAdocao(Adocao adocao){
-                this(adocao.getId() ,adocao.getTutor().getNome(),adocao.getPets().getNome(),adocao.getData());
+                this(adocao.getId() ,adocao.getPets().getNome(),adocao.getTutor().getNome(),adocao.getData());
 
         }
 }

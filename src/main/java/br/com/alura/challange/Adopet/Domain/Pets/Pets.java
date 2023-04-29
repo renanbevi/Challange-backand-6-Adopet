@@ -49,9 +49,7 @@ public class Pets {
         if (dados.adotado() != null){
             this.adotado = dados.adotado();
         }
-        if (dados.adotado() != null){
-            this.adotado = dados.adotado();
-        }
+
         if (dados.imagem() != null){
             this.imagem = dados.imagem() ;
         }

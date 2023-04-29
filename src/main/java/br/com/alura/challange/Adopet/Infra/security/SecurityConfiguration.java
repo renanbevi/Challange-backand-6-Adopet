@@ -26,6 +26,9 @@ public class SecurityConfiguration {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and().authorizeHttpRequests() //configurar como sera a requisiçao das autorizações requisição de login é via POST
                 .requestMatchers(HttpMethod.POST, "/login").permitAll() //libera o acesso permitindo a todos pois é acesso a requisição de login
+                .requestMatchers(HttpMethod.POST, "/abrigos").hasRole("ABRIGO")
+                .requestMatchers(HttpMethod.POST, "/tutores").hasRole("TUTOR")
+                .requestMatchers(HttpMethod.DELETE, "/adocao").hasRole("ABRIGO")
                 .anyRequest().authenticated()//somente liberar o acesso após login se o usuário estiver logado
                 .and().addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                 .build(); //Spring quero desabilitar o processo de autentificação e que seja Stateless pois é uma API REST

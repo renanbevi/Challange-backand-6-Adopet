@@ -7,5 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PetsRepository extends JpaRepository<Pets,Long> {
 
+
+
     Page<Pets> findAll(Pageable paginacao);
+
+
 }

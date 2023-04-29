@@ -37,9 +37,11 @@ public class AdocaoService {
     }
     public void deletarAdocao(Long id){
         var adocao = adocaoRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Adoção não cadastrada"));
-        adocaoRepository.deleteById(id);
         var pet = petsRepository.findById(id).orElseThrow();
         pet.marcarComoNaoAdotado(); // deletando a adoção o pet não estará mais adotado.
+        adocaoRepository.deleteById(id);
+
+
 
 
 

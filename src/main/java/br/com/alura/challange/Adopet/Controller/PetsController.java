@@ -7,6 +7,9 @@ import br.com.alura.challange.Adopet.Domain.Pets.*;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -32,14 +35,11 @@ public class PetsController {
     }
 
     @GetMapping
-    public ResponseEntity listar(DadosCadastroPet dados) {
+    public Page<DadosListagemPets> listar(@PageableDefault(size = 10, page = 0, sort = {"descricao"}) Pageable paginacao) {
+        var page = petsRepository.findAll(paginacao).map(DadosListagemPets::new);
 
-        var pets = petsRepository.findAll();
 
-        if (pets.isEmpty()) {
-            return ResponseEntity.ok("Não encontrado");
-        }
-        return ResponseEntity.ok(pets.stream().map(DadosListagemPets::new).collect(Collectors.toList()));
+       return ResponseEntity.ok(page).getBody();
     }
 
     @GetMapping("/{id}")
@@ -78,6 +78,7 @@ public class PetsController {
                return ResponseEntity.ok("Pet não encontrado para deletar");
            }
         }
+
 
    }
 

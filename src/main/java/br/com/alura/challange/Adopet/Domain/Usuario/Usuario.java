@@ -9,6 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -29,10 +30,16 @@ public class Usuario implements UserDetails {
 
     private String senha;
 
+    @ManyToMany(fetch=FetchType.EAGER)
+    @JoinTable(name = "usuarios_perfis",
+            joinColumns = @JoinColumn(name = "usuario_id"),
+            inverseJoinColumns = @JoinColumn(name = "perfil_id"))
+    private List<Perfil> perfis = new ArrayList<>();
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ROLE_USER")); // informando o perfil do usuário que vai acessar. sempre utilizando ROLE_
+        return perfis; // informando o perfil do usuário que vai acessar. sempre utilizando ROLE_
     }
 
     @Override
