@@ -2,6 +2,7 @@ package br.com.alura.challange.Adopet.Controller;
 
 
 import br.com.alura.challange.Adopet.Domain.Abrigo.*;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("abrigos")
+@SecurityRequirement(name = "bearer-key")
 public class AbrigoController {
 
     @Autowired

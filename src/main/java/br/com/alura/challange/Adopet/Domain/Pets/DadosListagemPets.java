@@ -10,9 +10,7 @@ public record DadosListagemPets(
 ) {
 
     public  DadosListagemPets(Pets pets){
-
         this(pets.getId(), pets.getNome(), pets.getDescricao(), pets.getAdotado(), pets.getIdade(), pets.getImagem());
-
     }
 
 

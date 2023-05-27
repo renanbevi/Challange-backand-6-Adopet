@@ -2,6 +2,7 @@ package br.com.alura.challange.Adopet.Controller;
 
 import br.com.alura.challange.Adopet.Domain.Tutor.*;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("tutores")
+@SecurityRequirement(name = "bearer-key")
 public class TutoresController {
 
     @Autowired

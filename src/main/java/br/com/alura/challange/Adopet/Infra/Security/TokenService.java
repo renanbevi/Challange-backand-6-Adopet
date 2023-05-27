@@ -1,4 +1,4 @@
-package br.com.alura.challange.Adopet.Infra.security;
+package br.com.alura.challange.Adopet.Infra.Security;
 
 
 import br.com.alura.challange.Adopet.Domain.Usuario.Usuario;

@@ -4,6 +4,7 @@ package br.com.alura.challange.Adopet.Controller;
 import br.com.alura.challange.Adopet.Domain.Adocao.*;
 
 import br.com.alura.challange.Adopet.Domain.Pets.DadosListagemPets;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/adocao")
+@SecurityRequirement(name = "bearer-key")
 public class AdocaoController {
 
     @Autowired

@@ -4,6 +4,7 @@ import br.com.alura.challange.Adopet.Domain.Abrigo.Abrigo;
 import br.com.alura.challange.Adopet.Domain.Abrigo.AbrigoRepository;
 import br.com.alura.challange.Adopet.Domain.Pets.*;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("pets")
+@SecurityRequirement(name = "bearer-key")
 public class PetsController {
 
     @Autowired

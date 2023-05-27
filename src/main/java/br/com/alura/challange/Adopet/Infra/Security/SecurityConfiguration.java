@@ -1,4 +1,4 @@
-package br.com.alura.challange.Adopet.Infra.security;
+package br.com.alura.challange.Adopet.Infra.Security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -29,6 +29,8 @@ public class SecurityConfiguration {
                 .requestMatchers(HttpMethod.POST, "/abrigos").hasRole("ABRIGO")
                 .requestMatchers(HttpMethod.POST, "/tutores").hasRole("TUTOR")
                 .requestMatchers(HttpMethod.DELETE, "/adocao").hasRole("ABRIGO")
+                .requestMatchers( "/v3/api-docs/**" , "/swagger-ui.html", "/swagger-ui/**").permitAll()
+                .requestMatchers( "/v3/api-docs/**" , "/swagger-ui.html", "/swagger-ui/**").permitAll()
                 .anyRequest().authenticated()//somente liberar o acesso após login se o usuário estiver logado
                 .and().addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                 .build(); //Spring quero desabilitar o processo de autentificação e que seja Stateless pois é uma API REST
